@@ -3,101 +3,139 @@ package com.example.calculator
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+// this import allows widgets to be accessed without declaration
+import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), View.OnClickListener{
-    private var newNumber: EditText? = null
-    private var operation: TextView? = null
-    private var result: EditText? = null
+private const val STATE_PENDING_OPERATION = "PendingOperation"
+private const val STATE_OPERAND1 = "Operand1"
+private const val STATE_OPERAND1_STORED = "Operand1_Stored"
+
+class MainActivity : AppCompatActivity(){
+    // private var newNumber: EditText? = null
+    // private var operation: TextView? = null
+    // The question mark, marks the var as nullable
+//    private lateinit var result: EditText
+//    private lateinit var newNumber: EditText
+    // Different way to assign value to display operation using a function
+    // Only gets called when displayOperation is first accessed
+//    private val displayOperation by lazy(LazyThreadSafetyMode.NONE) { findViewById<TextView>(R.id.operation) }
+
+    // Variables to hold the operands and type of calculation
+    private var operand1: Double? = null
+    private var pendingOperation = "="
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val divide = findViewById<Button>(R.id.buttonDivide)
-        val multiply = findViewById<Button>(R.id.buttonMultiply)
-        val minus = findViewById<Button>(R.id.buttonMinus)
-        val add = findViewById<Button>(R.id.buttonPlus)
+//        result = findViewById(R.id.result)
+//        newNumber = findViewById(R.id.newNumber)
+//
+//        // Data input buttons
+//        // button0: Button and findViewById<Button>
+//        val button0: Button = findViewById(R.id.button0)
+//        val button1: Button = findViewById(R.id.button1)
+//        val button2: Button = findViewById(R.id.button2)
+//        val button3: Button = findViewById(R.id.button3)
+//        val button4: Button = findViewById(R.id.button4)
+//        val button5: Button = findViewById(R.id.button5)
+//        val button6: Button = findViewById(R.id.button6)
+//        val button7: Button = findViewById(R.id.button7)
+//        val button8: Button = findViewById(R.id.button8)
+//        val button9: Button = findViewById(R.id.button9)
+//        val buttonDot: Button = findViewById(R.id.buttonDot)
+//
+//        // Operation buttons
+//        val equals = findViewById<Button>(R.id.buttonEquals)
+//        val divide = findViewById<Button>(R.id.buttonDivide)
+//        val multiply = findViewById<Button>(R.id.buttonMultiply)
+//        val minus = findViewById<Button>(R.id.buttonMinus)
+//        val add = findViewById<Button>(R.id.buttonPlus)
 
-        divide.setOnClickListener{ onClick(divide) }
-        multiply.setOnClickListener{ onClick(multiply) }
-        minus.setOnClickListener{ onClick(minus) }
-        add.setOnClickListener{ onClick(add) }
+        val listener = View.OnClickListener { v ->
+            val b = v as Button
+            newNumber.append(b.text)
+        }
 
-        val button0 = findViewById<Button>(R.id.button0)
-        val button1 = findViewById<Button>(R.id.button1)
-        val button2 = findViewById<Button>(R.id.button2)
-        val button3 = findViewById<Button>(R.id.button3)
-        val button4 = findViewById<Button>(R.id.button4)
-        val button5 = findViewById<Button>(R.id.button5)
-        val button6 = findViewById<Button>(R.id.button6)
-        val button7 = findViewById<Button>(R.id.button7)
-        val button8 = findViewById<Button>(R.id.button8)
-        val button9 = findViewById<Button>(R.id.button9)
+        button0.setOnClickListener(listener)
+        button1.setOnClickListener(listener)
+        button2.setOnClickListener(listener)
+        button3.setOnClickListener(listener)
+        button4.setOnClickListener(listener)
+        button5.setOnClickListener(listener)
+        button6.setOnClickListener(listener)
+        button7.setOnClickListener(listener)
+        button8.setOnClickListener(listener)
+        button9.setOnClickListener(listener)
+        buttonDot.setOnClickListener(listener)
 
-        button0.setOnClickListener{ onClick(button0) }
-        button1.setOnClickListener{ onClick(button1) }
-        button2.setOnClickListener{ onClick(button2) }
-        button3.setOnClickListener{ onClick(button3) }
-        button4.setOnClickListener{ onClick(button4) }
-        button5.setOnClickListener{ onClick(button5) }
-        button6.setOnClickListener{ onClick(button6) }
-        button7.setOnClickListener{ onClick(button7) }
-        button8.setOnClickListener{ onClick(button8) }
-        button9.setOnClickListener{ onClick(button9) }
+        val opListener = View.OnClickListener { v ->
+            val op = (v as Button).text.toString()
+            try {
+                val value = newNumber.text.toString().toDouble()
+                performOperation(value, op)
+            } catch (e: NumberFormatException) {
+                newNumber.setText("")
+            }
+            pendingOperation = op
+            operation.text = pendingOperation
+        }
 
+        buttonEquals.setOnClickListener(opListener)
+        buttonDivide.setOnClickListener(opListener)
+        buttonMultiply.setOnClickListener(opListener)
+        buttonMinus.setOnClickListener(opListener)
+        buttonPlus.setOnClickListener(opListener)
 
+        buttonNeg.setOnClickListener({})
     }
-    override fun onClick(v: View){
-        newNumber = findViewById(R.id.newNumber)
-        operation = findViewById(R.id.operation)
-        result = findViewById(R.id.result)
-        when (v.id) {
-            R.id.buttonDivide -> {
-                operation?.text = "/"
-            }
-            R.id.buttonMultiply -> {
-                operation?.text = "*"
-            }
-            R.id.buttonMinus -> {
-                operation?.text = "-"
-            }
-            R.id.buttonPlus -> {
-                operation?.text = "+"
+
+    private fun performOperation(value: Double, operation: String) {
+        if (operand1 == null) {
+            operand1 = value
+        } else {
+            if (pendingOperation == "=") {
+                pendingOperation = operation
             }
 
-            R.id.button0 -> {
-                newNumber?.append("0")
-            }
-            R.id.button1 -> {
-                newNumber?.append("1")
-            }
-            R.id.button2 -> {
-                newNumber?.append("2")
-            }
-            R.id.button3 -> {
-                newNumber?.append("3")
-            }
-            R.id.button4 -> {
-                newNumber?.append("4")
-            }
-            R.id.button5 -> {
-                newNumber?.append("5")
-            }
-            R.id.button6 -> {
-                newNumber?.append("6")
-            }
-            R.id.button7 -> {
-                newNumber?.append("7")
-            }
-            R.id.button8 -> {
-                newNumber?.append("8")
-            }
-            R.id.button9 -> {
-                newNumber?.append("9")
+            when (pendingOperation) {
+                "=" -> operand1 = value
+                "/" -> operand1 = if (value == 0.0) {
+                                    Double.NaN // handle attempt to divide by zero
+                                } else {
+                                    operand1!! / value
+                                }
+                "*" -> operand1 = operand1!! * value // !! Bang bang operator (return non nullable type)
+                "-" -> operand1 = operand1!! - value // Bang bang is safe to use because we check for null
+                "+" -> operand1 = operand1!! + value
             }
         }
+        result.setText(operand1.toString())
+        newNumber.setText("")
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        if (operand1 != null) {
+            // Question mark is safer than bang bang but we can be sure its not null because save state
+            // is not null because it is created after createState
+            outState.putDouble(STATE_OPERAND1, operand1!!)
+            outState.putBoolean(STATE_OPERAND1_STORED, true)
+        }
+        outState.putString(STATE_PENDING_OPERATION, pendingOperation)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        operand1 = if (savedInstanceState.getBoolean(STATE_OPERAND1_STORED, false)){
+            savedInstanceState.getDouble(STATE_OPERAND1)
+        } else {
+            null
+        }
+        operand1 = savedInstanceState.getDouble(STATE_OPERAND1)
+
+        pendingOperation = savedInstanceState.getString(STATE_PENDING_OPERATION, "=")
+        operation.text = pendingOperation
     }
 }
