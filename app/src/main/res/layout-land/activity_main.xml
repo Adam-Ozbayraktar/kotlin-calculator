@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#777777"
     android:padding="0dp"
     android:paddingLeft="0dp"
     android:paddingTop="0dp"
@@ -54,10 +55,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#2c3e50"
-        android:minWidth="48dp"
+        android:minWidth="100dp"
         android:text="1"
         android:textColor="@android:color/background_light"
-        android:textSize="24sp"
+        android:textSize="50sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/button2"
         app:layout_constraintEnd_toStartOf="@+id/button2" />
 
@@ -66,10 +67,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#2c3e50"
-        android:minWidth="48dp"
+        android:minWidth="100dp"
         android:text="4"
         android:textColor="@android:color/background_light"
-        android:textSize="24sp"
+        android:textSize="50sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/button5"
         app:layout_constraintEnd_toStartOf="@+id/button5" />
 
@@ -78,10 +79,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#2c3e50"
-        android:minWidth="48dp"
+        android:minWidth="100dp"
         android:text="7"
         android:textColor="@android:color/background_light"
-        android:textSize="24sp"
+        android:textSize="50sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/button8"
         app:layout_constraintEnd_toStartOf="@+id/button8" />
 
@@ -90,10 +91,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#2c3e50"
-        android:minWidth="48dp"
+        android:minWidth="100dp"
         android:text="0"
         android:textColor="@android:color/background_light"
-        android:textSize="24sp"
+        android:textSize="50sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/buttonEquals"
         app:layout_constraintEnd_toEndOf="@+id/button2" />
 
@@ -102,10 +103,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#2c3e50"
-        android:minWidth="48dp"
+        android:minWidth="100dp"
         android:text="2"
         android:textColor="@android:color/background_light"
-        android:textSize="24sp"
+        android:textSize="50sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="@+id/button5" />
 
@@ -114,10 +115,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#2c3e50"
-        android:minWidth="48dp"
+        android:minWidth="100dp"
         android:text="8"
         android:textColor="@android:color/background_light"
-        android:textSize="24sp"
+        android:textSize="50sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/button9"
         app:layout_constraintEnd_toStartOf="@+id/button9" />
 
@@ -126,10 +127,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#2c3e50"
-        android:minWidth="48dp"
+        android:minWidth="100dp"
         android:text="5"
         android:textColor="@android:color/background_light"
-        android:textSize="24sp"
+        android:textSize="50sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/button6"
         app:layout_constraintEnd_toEndOf="@+id/button8" />
 
@@ -138,10 +139,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#777777"
-        android:minWidth="48dp"
+        android:minWidth="100dp"
         android:text="/"
         android:textColor="@android:color/background_light"
-        android:textSize="24sp"
+        android:textSize="50sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/button9"
         app:layout_constraintStart_toEndOf="@+id/button9" />
 
@@ -150,10 +151,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#777777"
-        android:minWidth="48dp"
+        android:minWidth="100dp"
         android:text="NEG"
         android:textColor="@android:color/background_light"
-        android:textSize="24sp"
+        android:textSize="50sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/buttonDivide"
         app:layout_constraintStart_toEndOf="@+id/buttonDivide" />
 
@@ -162,10 +163,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#777777"
-        android:minWidth="48dp"
+        android:minWidth="100dp"
         android:text="+"
         android:textColor="@android:color/background_light"
-        android:textSize="24sp"
+        android:textSize="50sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/buttonEquals"
         app:layout_constraintStart_toEndOf="@+id/buttonEquals" />
 
@@ -174,10 +175,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#777777"
-        android:minWidth="48dp"
+        android:minWidth="100dp"
         android:text="*"
         android:textColor="@android:color/background_light"
-        android:textSize="24sp"
+        android:textSize="50sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/button6"
         app:layout_constraintStart_toEndOf="@+id/button6" />
 
@@ -186,10 +187,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#777777"
-        android:minWidth="48dp"
+        android:minWidth="100dp"
         android:text="-"
         android:textColor="@android:color/background_light"
-        android:textSize="24sp"
+        android:textSize="50sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/button3"
         app:layout_constraintStart_toEndOf="@+id/button3" />
 
@@ -198,10 +199,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#2c3e50"
-        android:minWidth="48dp"
+        android:minWidth="100dp"
         android:text="3"
         android:textColor="@android:color/background_light"
-        android:textSize="24sp"
+        android:textSize="50sp"
         app:layout_constraintStart_toStartOf="@+id/button6"
         app:layout_constraintTop_toBottomOf="@+id/button6" />
 
@@ -210,10 +211,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#2c3e50"
-        android:minWidth="48dp"
+        android:minWidth="100dp"
         android:text="6"
         android:textColor="@android:color/background_light"
-        android:textSize="24sp"
+        android:textSize="50sp"
         app:layout_constraintStart_toStartOf="@+id/button9"
         app:layout_constraintTop_toBottomOf="@+id/button9" />
 
@@ -223,10 +224,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:background="#2c3e50"
-        android:minWidth="48dp"
+        android:minWidth="100dp"
         android:text="9"
         android:textColor="@android:color/background_light"
-        android:textSize="24sp"
+        android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/result" />
@@ -236,10 +237,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#777777"
-        android:minWidth="48dp"
+        android:minWidth="100dp"
         android:text="="
         android:textColor="@android:color/background_light"
-        android:textSize="24sp"
+        android:textSize="50sp"
         app:layout_constraintStart_toStartOf="@+id/button3"
         app:layout_constraintTop_toBottomOf="@+id/button3" />
 
@@ -248,10 +249,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#777777"
-        android:minWidth="48dp"
+        android:minWidth="100dp"
         android:text="."
         android:textColor="@android:color/background_light"
-        android:textSize="24sp"
+        android:textSize="50sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/button0"
         app:layout_constraintEnd_toStartOf="@+id/button0" />
 

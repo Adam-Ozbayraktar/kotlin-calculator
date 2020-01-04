@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity(){
         buttonMinus.setOnClickListener(opListener)
         buttonPlus.setOnClickListener(opListener)
 
-        buttonNeg.setOnClickListener({})
+
     }
 
     private fun performOperation(value: Double, operation: String) {
