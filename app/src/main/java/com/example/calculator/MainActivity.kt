@@ -1,6 +1,7 @@
 package com.example.calculator
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity(){
     // Variables to hold the operands and type of calculation
     private var operand1: Double? = null
     private var pendingOperation = "="
+    private var isNegative = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,7 +90,33 @@ class MainActivity : AppCompatActivity(){
         buttonMinus.setOnClickListener(opListener)
         buttonPlus.setOnClickListener(opListener)
 
+        val negListener = View.OnClickListener {
+            var numberInput = newNumber.text.toString()
+            if (isNegative) {
+                numberInput = numberInput.drop(1)
+                Log.d("isNegative", numberInput)
+                newNumber.setText(numberInput)
+                isNegative = false
+            } else {
+                val neg = "-"
+                numberInput = "$neg$numberInput"
+                Log.d("notNegative", numberInput)
+                newNumber.setText(numberInput)
+                isNegative = true
+            }
+        }
 
+        buttonNeg.setOnClickListener(negListener)
+
+        val clearListener = View.OnClickListener {
+            operand1 = null
+            pendingOperation = "="
+            newNumber.setText("")
+            result.setText("")
+            operation.text = ""
+        }
+
+        buttonClear?.setOnClickListener(clearListener)
     }
 
     private fun performOperation(value: Double, operation: String) {
@@ -97,10 +125,13 @@ class MainActivity : AppCompatActivity(){
         } else {
             if (pendingOperation == "=") {
                 pendingOperation = operation
+                isNegative = false
             }
 
             when (pendingOperation) {
-                "=" -> operand1 = value
+                "=" -> {
+                    operand1 = value
+                }
                 "/" -> operand1 = if (value == 0.0) {
                                     Double.NaN // handle attempt to divide by zero
                                 } else {
@@ -113,6 +144,7 @@ class MainActivity : AppCompatActivity(){
         }
         result.setText(operand1.toString())
         newNumber.setText("")
+        isNegative = false
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
